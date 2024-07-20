@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>All Items</h3>
+    <form method="GET" action="/items/item">
+      <button>SELL</button>
+    </form>
+    <ul>
+      <% for(let mobile of allMobile){ %>
+      <li><a href="/items/<%= mobile._id %>"><%= mobile.title %></a></li>
+      <% } %> <% for(let car of allCar){ %>
+      <li>
+        <a href="/items/<%= car._id %>">
+          <%=car.brand %>&nbsp;<%=car.model %>&nbsp;(<%=car.year %>)
+        </a>
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
