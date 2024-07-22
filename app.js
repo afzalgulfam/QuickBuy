@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Mobile = require("./models/mobile.js");
 const Car = require("./models/car.js");
 const path = require("path");
+const ejsMate = require("ejs-mate");
 
 main()
   .then(() => {
@@ -18,6 +19,8 @@ async function main() {
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.engine("ejs", ejsMate);
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/", (req, res) => {
   res.send("Hii, I am Root");
@@ -53,6 +56,19 @@ app.get("/items/:id/attribute", async (req, res) => {
 app.get("/items/:id/new", (req, res) => {
   let { id } = req.params;
   res.render("items/new.ejs", { id });
+});
+
+// Create Route
+app.post("/items", async (req, res) => {
+  if (req.body.car) {
+    let newCar = new Car(req.body.car);
+    await newCar.save();
+  }
+  if (req.body.mobile) {
+    let newMobile = new Mobile(req.body.mobile);
+    await newMobile.save();
+  }
+  res.redirect("/items");
 });
 
 app.listen(8080, () => {

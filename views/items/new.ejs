@@ -9,19 +9,19 @@
     <h3>Include some details</h3>
     <% if(id=="car" || id=="bike"){ %>
     <form method="POST" action="/items">
-      <input name="item[brand]" placeholder="Brand *" type="text" />
+      <input name="car[brand]" placeholder="Brand *" type="text" />
       <br /><br />
-      <input name="item[model]" placeholder="Model *" type="text" />
+      <input name="car[model]" placeholder="Model *" type="text" />
       <br /><br />
       <% if(id=="car"){ %>
-      <input name="item[variant]" placeholder="Variant *" type="text" />
+      <input name="car[variant]" placeholder="Variant *" type="text" />
       <br /><br />
       <% } %>
-      <input name="year" placeholder="Year *" type="number" />
+      <input name="car[year]" placeholder="Year *" type="number" />
       <br /><br />
       <% if(id=="car"){ %>
-      <label for="fuel">Fuel *</label>
-      <select name="fuel">
+      <label for="car[fuel]">Fuel *</label>
+      <select name="car[fuel]">
         <option value="cng">CNG & Hybrids</option>
         <option value="diesel">Diesel</option>
         <option value="electric">Electric</option>
@@ -31,50 +31,60 @@
       <br /><br />
       Transmission
       <br />
-      <input name="transmission" placeholder="transmission" type="radio" />
-      <label for="automatic">Automatic</label>
-      <input name="transmission" placeholder="transmission" type="radio" />
-      <label for="manual">Manual</label>
+      <input
+        name="car[transmission]"
+        placeholder="transmission"
+        type="radio"
+        value="automatic"
+      />
+      <label for="car[automatic]">Automatic</label>
+      <input
+        name="car[transmission]"
+        placeholder="transmission"
+        type="radio"
+        value="manual"
+      />
+      <label for="car[manual]">Manual</label>
       <br /><br />
       <% } %>
-      <input name="driven" placeholder="KM driven " type="number" />
+      <input name="car[driven]" placeholder="KM driven " type="number" />
       <br /><br />
       <% if(id=="car"){ %>
-      <input name="owners" placeholder="No. of Owners" type="number" />
+      <input name="car[owners]" placeholder="No. of Owners" type="number" />
       <br /><br />
       <% } %>
       <textarea
-        name="description"
+        name="car[description]"
         placeholder="Describe what you are selling *"
       ></textarea>
       <br /><br />
-      <input name="image" placeholder="image link *" type="text" />
+      <input name="car[image]" placeholder="image link *" type="text" />
       <br /><br />
-      <input name="price" placeholder="Price *" type="number" />
+      <input name="car[price]" placeholder="Price *" type="number" />
       <br /><br />
-      <input name="location" placeholder="Location *" type="text" />
+      <input name="car[location]" placeholder="Location *" type="text" />
       <br /><br />
       <button>Post Now</button>
     </form>
     <% } %> <% if(id=="mobile" || id=="electronic"){ %>
     <form method="POST" action="/items">
       <% if(id=="mobile") {%>
-      <input name="brand" placeholder="Brand *" type="text" />
+      <input name="mobile[brand]" placeholder="Brand *" type="text" />
       <br /><br />
       <% } %>
-      <input name="title *" placeholder="Ad title *" type="text" />
+      <input name="mobile[title]" placeholder="Ad title *" type="text" />
       <br /><br />
-      <input
-        name="description"
+      <textarea
+        name="mobile[description]"
         placeholder="Describe what you are selling *"
-        type="text"
-      />
+      >
+      </textarea>
       <br /><br />
-      <input name="image" placeholder="image link *" type="text" />
+      <input name="mobile[image]" placeholder="image link *" type="text" />
       <br /><br />
-      <input name="price" placeholder="Price *" type="number" />
+      <input name="mobile[price]" placeholder="Price *" type="number" />
       <br /><br />
-      <input name="location" placeholder="Location *" type="text" />
+      <input name="mobile[location]" placeholder="Location *" type="text" />
       <br /><br />
       <button>Post Now</button>
     </form>
