@@ -14,8 +14,8 @@ async function main() {
 }
 
 const initDB = async () => {
-  await Car.deleteMany({});
-  await Car.insertMany(initData.carData);
+  await Mobile.deleteMany({});
+  await Mobile.insertMany(initData.mobileData);
   console.log("data was initialized");
 };
 

@@ -1,93 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QuickBuy</title>
-  </head>
-  <body>
-    <h3>Include some details</h3>
-    <% if(id=="car" || id=="bike"){ %>
-    <form method="POST" action="/items">
-      <input name="car[brand]" placeholder="Brand *" type="text" />
-      <br /><br />
-      <input name="car[model]" placeholder="Model *" type="text" />
-      <br /><br />
-      <% if(id=="car"){ %>
-      <input name="car[variant]" placeholder="Variant *" type="text" />
-      <br /><br />
-      <% } %>
-      <input name="car[year]" placeholder="Year *" type="number" />
-      <br /><br />
-      <% if(id=="car"){ %>
-      <label for="car[fuel]">Fuel *</label>
-      <select name="car[fuel]">
-        <option value="cng">CNG & Hybrids</option>
-        <option value="diesel">Diesel</option>
-        <option value="electric">Electric</option>
-        <option value="lpg">LPG</option>
-        <option value="petrol">Petrol</option>
-      </select>
-      <br /><br />
-      Transmission
-      <br />
-      <input
-        name="car[transmission]"
-        placeholder="transmission"
-        type="radio"
-        value="automatic"
-      />
-      <label for="car[automatic]">Automatic</label>
-      <input
-        name="car[transmission]"
-        placeholder="transmission"
-        type="radio"
-        value="manual"
-      />
-      <label for="car[manual]">Manual</label>
-      <br /><br />
-      <% } %>
-      <input name="car[driven]" placeholder="KM driven " type="number" />
-      <br /><br />
-      <% if(id=="car"){ %>
-      <input name="car[owners]" placeholder="No. of Owners" type="number" />
-      <br /><br />
-      <% } %>
-      <textarea
-        name="car[description]"
-        placeholder="Describe what you are selling *"
-      ></textarea>
-      <br /><br />
-      <input name="car[image]" placeholder="image link *" type="text" />
-      <br /><br />
-      <input name="car[price]" placeholder="Price *" type="number" />
-      <br /><br />
-      <input name="car[location]" placeholder="Location *" type="text" />
-      <br /><br />
-      <button>Post Now</button>
-    </form>
-    <% } %> <% if(id=="mobile" || id=="electronic"){ %>
-    <form method="POST" action="/items">
-      <% if(id=="mobile") {%>
-      <input name="mobile[brand]" placeholder="Brand *" type="text" />
-      <br /><br />
-      <% } %>
-      <input name="mobile[title]" placeholder="Ad title *" type="text" />
-      <br /><br />
-      <textarea
-        name="mobile[description]"
-        placeholder="Describe what you are selling *"
-      >
-      </textarea>
-      <br /><br />
-      <input name="mobile[image]" placeholder="image link *" type="text" />
-      <br /><br />
-      <input name="mobile[price]" placeholder="Price *" type="number" />
-      <br /><br />
-      <input name="mobile[location]" placeholder="Location *" type="text" />
-      <br /><br />
-      <button>Post Now</button>
-    </form>
-    <% } %>
-  </body>
-</html>
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  .navbar {
+    display: none;
+  }
+</style>
+<body>
+  <div class="back sticky-top"></div>
+  <h4>POST YOUR AD</h4>
+  <div class="centre">
+    <div class="row item-info">
+      <b class="select">SELECTED CATEGORY</b>
+      <a href="/items/item" class="change"><b>Change Category</b></a>
+      <div class="hr"></div>
+      <b class="include">INCLUDE SOME DETAILS</b><br />
+      <span class="input">
+        <% if(id=="car" || id=="bike"){ %>
+        <form method="POST" action="/items">
+          <div class="mb-3">
+            <label for="brand" class="form-label label-text">Brand *</label>
+            <input name="car[brand]" type="text" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="model" class="form-label label-text">Model *</label>
+            <input name="car[model]" type="text" class="form-control" />
+          </div>
+          <% if(id=="car"){ %>
+          <div class="mb-3">
+            <label for="variant" class="form-label label-text">Variant *</label>
+            <input name="car[variant]" type="text" class="form-control" />
+          </div>
+          <% } %>
+          <div class="mb-3">
+            <label for="year" class="form-label label-text">Year *</label>
+            <input name="car[year]" class="form-control" type="number" />
+          </div>
+          <% if(id=="car"){ %>
+          <div class="mb-3">
+            <label class="label-text">Fuel *</label><br />
+            <br />
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option5"
+              autocomplete="off"
+              value="CNG & Hybrids"
+            />
+            <label class="btn label-text radio-button" for="option5"
+              >CNG & Hybrids</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option6"
+              autocomplete="off"
+              value="Diesel"
+            />
+            <label class="btn label-text radio-button" for="option6"
+              >Diesel</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option7"
+              autocomplete="off"
+              value="Electric"
+            />
+            <label class="btn label-text radio-button" for="option7"
+              >Electric</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option8"
+              autocomplete="off"
+              value="LGP"
+            />
+            <label class="btn label-text radio-button" for="option8">LGP</label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option9"
+              autocomplete="off"
+              value="Petrol"
+            />
+            <label class="btn label-text radio-button" for="option9"
+              >Petrol</label
+            >
+          </div>
+          <div class="mb-3">
+            <label class="label-text">Transmission *</label><br />
+            <br />
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[transmission]"
+              id="option10"
+              autocomplete="off"
+              value="Automatic"
+            />
+            <label class="btn label-text radio-button" for="option10"
+              >Automatic</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[transmission]"
+              id="option11"
+              autocomplete="off"
+              value="Manual"
+            />
+            <label class="btn label-text radio-button" for="option11"
+              >Manual</label
+            >
+          </div>
+          <% } %>
+          <div class="mb-3">
+            <label for="driven" class="form-label">KM driven *</label>
+            <input name="car[driven]" class="form-control" type="number" />
+          </div>
+          <% if(id=="car"){ %>
+          <div class="mb-3">
+            <label class="label-text">No. of Owners *</label><br />
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option12"
+              autocomplete="off"
+              value="1st"
+            />
+            <label class="btn label-text radio-button" for="option12"
+              >&nbsp;&nbsp;&nbsp;1st&nbsp;&nbsp;&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option13"
+              autocomplete="off"
+              value="2nd"
+            />
+            <label class="btn label-text radio-button" for="option13"
+              >&nbsp;2nd&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option14"
+              autocomplete="off"
+              value="3rd"
+            />
+            <label class="btn label-text radio-button" for="option14"
+              >&nbsp;&nbsp;3rd&nbsp;&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option15"
+              autocomplete="off"
+              value="4th"
+            />
+            <label class="btn label-text radio-button" for="option15"
+              >&nbsp;&nbsp;4th&nbsp;&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option16"
+              autocomplete="off"
+              value="4+"
+            />
+            <label class="btn label-text radio-button" for="option16"
+              >&nbsp;&nbsp;&nbsp;4+&nbsp;&nbsp;&nbsp;</label
+            >
+          </div>
+          <% } %>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description *</label>
+            <textarea name="car[description]" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">UPLOAD PHOTOS *</label>
+            <input name="car[image]" class="form-control" type="text" />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price *</label>
+            <input name="car[price]" class="form-control" type="number" />
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location *</label>
+            <input name="car[location]" class="form-control" type="text" />
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City *</label>
+            <input name="car[city]" class="form-control" type="text" />
+          </div>
+          <div class="mb-3">
+            <label for="state" class="form-label">State </label>
+            <input name="car[state]" class="form-control" type="text" />
+          </div>
+          <button class="btn btn-post mb-3">Post now</button>
+        </form>
+        <% } %> <% if(id=="mobile" || id=="electronic"){ %>
+        <form method="POST" action="/items">
+          <% if(id=="mobile") {%>
+          <div class="mb-3">
+            <label for="brand" class="form-label">Brand *</label>
+            <input name="mobile[brand]" class="form-control" type="text" />
+          </div>
+          <% } %>
+          <div class="mb-3">
+            <label for="title" class="form-label">Ad title *</label>
+            <input name="mobile[title]" class="form-control" type="text" />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description *</label>
+            <textarea
+              name="mobile[description]"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image *</label>
+            <input name="mobile[image]" class="form-control" type="text" />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price *</label>
+            <input name="mobile[price]" class="form-control" type="number" />
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location *</label>
+            <input name="mobile[location]" class="form-control" type="text" />
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City *</label>
+            <input name="mobile[city]" class="form-control" type="text" />
+          </div>
+          <div class="mb-3">
+            <label for="state" class="form-label">State </label>
+            <input name="mobile[state]" class="form-control" type="text" />
+          </div>
+          <button class="btn btn-post mb-3">Post Now</button>
+        </form>
+        <% } %>
+      </span>
+    </div>
+  </div>
+</body>

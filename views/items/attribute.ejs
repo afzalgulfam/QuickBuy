@@ -1,51 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QuickBuy</title>
-  </head>
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  .navbar {
+    display: none;
+  }
+</style>
   <body>
+    <div class="back"></div>
+    <h4>POST YOUR AD</h4>
+    <div class="centre">
+    <div class="row allitem"> 
     <% if(id=="mobile"){ %>
-    <h3>Mobiles</h3>
-    <li><a href="/items/mobile/new">Mobile phones</a></li>
-    <li><a href="/items/mobile/new">Tablets</a></li>
-    <li><a href="/items/electronic/new"> Accessories</a></li>
+      <b id="category-text">Mobiles</b>
+      <a href="/items/mobile/new" class="item">Mobile phones</a>
+      <a href="/items/mobile/new"  class="item">Tablets</a>
+      <a href="/items/electronic/new"  class="item"> Accessories</a>
     <% } %> <% if(id=="bike"){ %>
-    <h3>Bikes</h3>
-    <li><a href="/items/bike/new">Motorcycles </a></li>
-    <li><a href="/items/bike/new">Scooters</a></li>
-    <li><a href="/items/mobile/new"> Bicycles</a></li>
-    <li><a href="/items/electronic/new"> Spare Parts</a></li>
+      <b id="category-text">Bikes</b>
+    <a href="/items/bike/new" class="item">Motorcycles </a>
+    <a href="/items/bike/new" class="item">Scooters</a>
+    <a href="/items/mobile/new" class="item"> Bicycles</a>
+    <a href="/items/electronic/new" class="item"> Spare Parts</a>
     <% } %><% if(id=="fashion"){ %>
-    <h3>Fashion</h3>
-    <li><a href="/items/electronic/new">Men </a></li>
-    <li><a href="/items/electronic/new">Women</a></li>
-    <li><a href="/items/electronic/new"> Kids</a></li>
+      <b id="category-text">Fashion</b>
+    <a href="/items/electronic/new" class="item">Men </a>
+    <a href="/items/electronic/new" class="item">Women</a>
+    <a href="/items/electronic/new" class="item"> Kids</a>
     <% } %> <% if(id=="furniture"){ %>
-    <h3>Furniture</h3>
-    <li><a href="/items/electronic/new">Sofa & Dining </a></li>
-    <li><a href="/items/electronic/new">Beds & Wardrobes</a></li>
-    <li><a href="/items/electronic/new"> Home Decor & Garden</a></li>
-    <li><a href="/items/electronic/new"> Kids Furniture</a></li>
-    <li><a href="/items/electronic/new"> Other Household Items</a></li>
+      <b id="category-text">Furniture</b>
+    <a href="/items/electronic/new" class="item">Sofa & Dining </a>
+    <a href="/items/electronic/new" class="item">Beds & Wardrobes</a>
+    <a href="/items/electronic/new" class="item"> Home Decor & Garden</a>
+    <a href="/items/electronic/new" class="item"> Kids Furniture</a>
+    <a href="/items/electronic/new" class="item"> Other Household Items</a>
     <% } %> <% if(id=="electronic"){ %>
-    <h3>Electronics & Appliances</h3>
-    <li><a href="/items/electronic/new">TVs, Video-Audio </a></li>
-    <li><a href="/items/electronic/new">Kitchen & Other Appliances</a></li>
-    <li><a href="/items/electronic/new"> Computers & Laptops</a></li>
-    <li><a href="/items/electronic/new"> Fridges </a></li>
-    <li><a href="/items/electronic/new"> Computer Accessories</a></li>
-    <li><a h ref="/items/electronic/new">Cameras & Lenses </a></li>
-    <li><a href="/items/electronic/new">Games & Entertainment</a></li>
-    <li>
-      <a href="/items/electronic/new"> Hard Disks, Printers & Monitors</a>
-    </li>
-    <li><a href="/items/electronic/new"> Washing Machines</a></li>
-    <li><a href="/items/electronic/new"> ACs</a></li>
+      <b id="category-text">Electronics & Appliances</b>
+    <a href="/items/electronic/new" class="item">TVs, Video-Audio </a>
+    <a href="/items/electronic/new" class="item">Kitchen & Other Appliances</a>
+    <a href="/items/electronic/new" class="item"> Computers & Laptops</a>
+    <a href="/items/electronic/new" class="item"> Fridges </a>
+    <a href="/items/electronic/new" class="item"> Computer Accessories</a>
+    <a href="/items/electronic/new" class="item">Cameras & Lenses </a>
+    <a href="/items/electronic/new" class="item">Games & Entertainment</a>
+    <a href="/items/electronic/new" class="item"> Hard Disks, Printers & Monitors</a>
+    <a href="/items/electronic/new" class="item"> Washing Machines</a>
+    <a href="/items/electronic/new" class="item"> ACs</a>
     <% } %> <% if(id=="car"){ %>
-    <h3>Cars</h3>
-    <li><a href="/items/car/new">Cars </a></li>
+      <b id="category-text">Cars</b>
+    <a href="/items/car/new" class="item">Cars </a>
     <% } %>
+  </div>
+</div>
+</div>
   </body>
-</html>
+

@@ -8,6 +8,8 @@ const mobileSchema = new Schema({
   image: String,
   price: Number,
   location: String,
+  city: String,
+  state: String,
 });
 
 const Mobile = mongoose.model("Mobile", mobileSchema);

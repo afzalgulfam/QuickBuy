@@ -14,6 +14,8 @@ const carSchema = new Schema({
   image: String,
   price: Number,
   location: String,
+  city: String,
+  state: String,
 });
 
 const Car = mongoose.model("Car", carSchema);

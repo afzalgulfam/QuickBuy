@@ -1,15 +1,49 @@
-<% layout("/layouts/boilerplate.ejs") %>
+<% layout("/layouts/boilerplate.ejs",{showNavbar:true}) %>
 <body>
   <h3>All Items</h3>
-  <ul>
-    <% for(let mobile of allMobile){ %>
-    <li><a href="/items/<%= mobile._id %>"><%= mobile.title %></a></li>
-    <% } %> <% for(let car of allCar){ %>
-    <li>
-      <a href="/items/<%= car._id %>">
-        <%=car.brand %>&nbsp;<%=car.model %>&nbsp;(<%=car.year %>)
-      </a>
-    </li>
-    <% } %>
-  </ul>
+  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+    <% let mobileIndex = 0; let carIndex = 0; while (mobileIndex <
+    allMobile.length || carIndex < allCar.length) { for (let i = 0; i < 4 &&
+    mobileIndex < allMobile.length; i++) { let mobile =
+    allMobile[mobileIndex++]; %>
+    <a href="/items/<%= mobile._id %>" class="item-link">
+      <div class="card col" style="width: 20rem">
+        <img
+          src="<%= mobile.image %>"
+          class="card-image"
+          alt="item_image"
+          style="height: 12rem"
+        />
+        <div class="card-body">
+          <p class="card-text">
+            <strong> &#8377; <%= mobile.price%></strong><br />
+            <%= mobile.title %><br />
+            <b> <%= mobile.brand %></b><br />
+            <small> <%= mobile.location %></small>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } for (let i = 0; i < 4 && carIndex < allCar.length; i++) { let car =
+    allCar[carIndex++]; %>
+    <a href="/items/<%= car._id %>" class="item-link">
+      <div class="card col" style="width: 20rem">
+        <img
+          src="<%= car.image %>"
+          class="card-image"
+          alt="item_image"
+          style="height: 12rem"
+        />
+        <div class="card-body">
+          <p class="card-text">
+            <strong> &#8377; <%= car.price %></strong><br />
+            <%= car.year %> - <%= car.driven %> Km <br />
+            <strong> <%= car.brand %>&nbsp;<%= car.model %></strong><br />
+            <small><%= car.location %></small>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } } %>
+  </div>
 </body>

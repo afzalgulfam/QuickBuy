@@ -7,7 +7,18 @@
   <li><%=mobile.location%></li>
   <li><%=mobile.brand %></li>
   <li><%=mobile.description %></li>
+  <form method="POST" action="/items/<%=mobile._id%>?_method=DELETE">
+    <button>Delete</button>
+  </form>
   <% } %> <% if(car){ %>
+  <div class="card">
+    <img src="<%=car.image%>" class="card-img-top" alt="item-image" />
+    <div class="card-body">
+      <p class="card-text">
+        <%=car.brand %>&nbsp;<%=car.model %>&nbsp;(<%=car.year %>)
+      </p>
+    </div>
+  </div>
   <b><li><%=car.brand %>&nbsp;<%=car.model %>&nbsp;(<%=car.year %>)</li></b>
   <li><%=car.variant %></li>
   <li>&#8377; <%=car.price.toLocaleString("en-IN") %></li>
@@ -17,5 +28,8 @@
   <li><%=car.owners %></li>
   <li><%=car.location %></li>
   <li><%=car.description %></li>
+  <form method="POST" action="/items/<%=car._id%>?_method=DELETE">
+    <button>Delete</button>
+  </form>
   <% } %>
 </body>

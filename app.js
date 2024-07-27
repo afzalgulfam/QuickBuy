@@ -5,6 +5,7 @@ const Mobile = require("./models/mobile.js");
 const Car = require("./models/car.js");
 const path = require("path");
 const ejsMate = require("ejs-mate");
+const methodOverride = require("method-override");
 
 main()
   .then(() => {
@@ -21,6 +22,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
   res.send("Hii, I am Root");
@@ -53,7 +55,7 @@ app.get("/items/:id/attribute", async (req, res) => {
 });
 
 // New Route
-app.get("/items/:id/new", (req, res) => {
+app.get("/items/:id/new", async (req, res) => {
   let { id } = req.params;
   res.render("items/new.ejs", { id });
 });
@@ -68,6 +70,14 @@ app.post("/items", async (req, res) => {
     let newMobile = new Mobile(req.body.mobile);
     await newMobile.save();
   }
+  res.redirect("/items");
+});
+
+// Delete Route
+app.delete("/items/:id", async (req, res) => {
+  let { id } = req.params;
+  await Car.findByIdAndDelete(id);
+  await Mobile.findByIdAndDelete(id);
   res.redirect("/items");
 });
 

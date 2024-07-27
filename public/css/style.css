@@ -1,3 +1,15 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+/* Navbar */
 .navbar {
   height: 4rem;
 }
@@ -5,3 +17,214 @@
 .nav-link {
   color: #222222 !important;
 }
+
+.navbar-brand {
+  color: #002f34 !important;
+}
+
+/* Footer */
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+.f-info {
+  text-align: center;
+  display: flex;
+  height: 8rem;
+  background-color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-info-socials i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+/* Cards */
+.card {
+  margin-right: 0.6rem;
+  margin-bottom: 0.6rem;
+  padding: 0.5rem;
+}
+
+.card-image {
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text p {
+  font-weight: 400;
+}
+
+.item-link {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  text-decoration: none;
+}
+
+/*New Page Item  */
+h4 {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: bold !important;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #002f34 !important;
+}
+
+.back {
+  height: 70px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #ebebeb;
+}
+
+.item {
+  text-decoration: none;
+  border-top: 1px solid rgb(216, 212, 212);
+  color: gray;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.item:hover {
+  color: black;
+  background-color: #ebebeb;
+}
+
+.allitem {
+  border: 1px solid rgb(216, 212, 212);
+  margin-bottom: 30px;
+  width: 400px;
+  border-radius: 5px;
+}
+
+.centre {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+#category-text {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  color: #002f34;
+}
+
+/* New Page */
+.item-info {
+  border: 1px solid rgb(216, 212, 212);
+  margin-bottom: 30px;
+  width: 850px;
+  border-radius: 5px;
+}
+
+.text-color {
+  color: #002f34 !important;
+}
+
+.change {
+  color: #002f34;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  text-decoration: none;
+  margin-left: 6px;
+  padding-bottom: 25px;
+}
+
+.change:hover {
+  text-decoration: underline;
+}
+
+.select {
+  font-size: 20px;
+  font-weight: 750;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  padding: 17px;
+  margin-left: 6px;
+}
+
+.input {
+  margin-left: 25px;
+}
+
+.include {
+  font-size: 20px;
+  font-weight: 750;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  padding-top: 25px;
+  margin-left: 25px;
+}
+
+.form-control {
+  width: 430px !important;
+  color: #002f34 !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.btn-check {
+  color: #002f34 !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.label-text {
+  color: #002f34 !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.radio-button {
+  border: 1px solid rgb(216, 212, 212) !important;
+}
+
+.radio-button:hover {
+  background-color: #e0ffff !important;
+  border-color: rgb(216, 212, 212) !important;
+}
+
+.radio-button {
+  border-color: rgb(216, 212, 212) !important;
+  margin-right: 5px !important;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #e0ffff !important;
+  border-color: #002f34 !important;
+}
+
+.hr {
+  background-color: rgb(216, 212, 212);
+  height: 0.9px;
+}
+
+.btn-post {
+  color: #002f34 !important;
+  border-color: rgb(216, 212, 212) !important;
+  font-weight: 900 !important;
+  height: 50px !important;
+}
+
+.btn-post:hover {
+  color: white !important;
+  background-color: #002f34 !important;
+}
+
+/* Show Page */

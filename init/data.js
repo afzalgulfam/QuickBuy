@@ -8,6 +8,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 94999,
     location: "Mumbai",
+    city: "Mumbai",
+    state: "Maharastra",
   },
   {
     brand: "Apple",
@@ -18,6 +20,7 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 129900,
     location: "Delhi",
+    city: "Delhi",
   },
   {
     brand: "OnePlus",
@@ -28,6 +31,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 54999,
     location: "Bangalore",
+    city: "Bangalore",
+    state: "Karnatak",
   },
   {
     brand: "Xiaomi",
@@ -38,6 +43,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 29999,
     location: "Hyderabad",
+    city: "Hyderabad",
+    state: "Telengana",
   },
   {
     brand: "Realme",
@@ -48,6 +55,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1599950755346-a3e58f84ca63?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 31999,
     location: "Pune",
+    city: "Pune",
+    state: "maharastra",
   },
   {
     brand: "Oppo",
@@ -58,6 +67,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1622782914767-404fb9ab3f57?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 39990,
     location: "Chennai",
+    city: "Chennai",
+    state: "tamil nadu",
   },
   {
     brand: "Vivo",
@@ -68,6 +79,7 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1533022139390-e31c488d69e2?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 54990,
     location: "Delhi",
+    city: "Delhi",
   },
   {
     brand: "Google",
@@ -78,6 +90,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1511296933631-18b1a062212c?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 34999,
     location: "Bangalore",
+    city: "Bangalore",
+    state: "karnatak",
   },
   {
     brand: "Motorola",
@@ -88,6 +102,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1510166089176-b57564a542b1?q=80&w=2024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 42999,
     location: "Chennai",
+    city: "Chennai",
+    state: "tamil nadu",
   },
   {
     brand: "Nokia",
@@ -98,6 +114,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 18999,
     location: "Hyderabad",
+    city: "Hyderabad",
+    state: "Telengana",
   },
   {
     brand: "OnePlus",
@@ -108,6 +126,8 @@ const sampleMobile = [
       "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 29999,
     location: "Pune",
+    city: "Pune",
+    state: "maharastra",
   },
 ];
 
@@ -127,6 +147,8 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1576074436157-6555fe967d80?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 500000,
     location: "Mumbai",
+    city: "Mumbai",
+    state: "maharastra",
   },
   {
     brand: "Hyundai",
@@ -143,6 +165,7 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1559038465-e0ca2910a5b1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 600000,
     location: "Delhi",
+    city: "Delhi",
   },
   {
     brand: "Toyota",
@@ -159,6 +182,8 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1617045434421-a72d713fc8a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fHw%3D",
     price: 1500000,
     location: "Bangalore",
+    city: "Bangalore",
+    state: "karnataka",
   },
   {
     brand: "Honda",
@@ -175,6 +200,8 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1654618345032-e3f3909750a8?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 700000,
     location: "Chennai",
+    city: "Chennai",
+    state: "tamil nadu",
   },
   {
     brand: "Ford",
@@ -191,6 +218,8 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 850000,
     location: "Pune",
+    city: "Pune",
+    state: "maharastra",
   },
   {
     brand: "Volkswagen",
@@ -207,6 +236,8 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 600000,
     location: "Kolkata",
+    city: "Kolkata",
+    state: "west bengal",
   },
   {
     brand: "Tata",
@@ -223,6 +254,8 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 900000,
     location: "Hyderabad",
+    city: "Hyderabad",
+    state: "Telengana",
   },
   {
     brand: "Mahindra",
@@ -239,7 +272,10 @@ const sampleCar = [
       "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 800000,
     location: "Ahmedabad",
+    city: "Ahmedabad",
+    state: "Uttarpradesh",
   },
 ];
-module.exports = { mobileData: sampleMobile };
+
 module.exports = { carData: sampleCar };
+module.exports = { mobileData: sampleMobile };
