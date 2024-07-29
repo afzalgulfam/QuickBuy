@@ -1,35 +1,78 @@
 <% layout("/layouts/boilerplate.ejs") %>
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+</style>
 <body>
-  <h3>Show Details</h3>
   <% if(mobile){ %>
   <li>&#8377; <%=mobile.price.toLocaleString("en-IN") %></li>
   <li><%=mobile.title %></li>
   <li><%=mobile.location%></li>
   <li><%=mobile.brand %></li>
-  <li><%=mobile.description %></li>
+  <pre><%=mobile.description %></pre>
   <form method="POST" action="/items/<%=mobile._id%>?_method=DELETE">
     <button>Delete</button>
   </form>
   <% } %> <% if(car){ %>
-  <div class="card">
-    <img src="<%=car.image%>" class="card-img-top" alt="item-image" />
-    <div class="card-body">
-      <p class="card-text">
+  <div class="card card-show">
+    <img
+      src="<%=car.image%>"
+      class="card-img-top show-image"
+      alt="item-image"
+    />
+  </div>
+  <div class="row row-cols-lg-3 row-cols-md-2">
+
+    <div class="card card-item-left col">
+      <h3 class="item-title">
         <%=car.brand %>&nbsp;<%=car.model %>&nbsp;(<%=car.year %>)
+      </h3>
+      <p><%=car.variant %></p>
+      <p class="item-detail fog">
+        <i class="fa-solid fa-gas-pump"></i>&nbsp;&nbsp;<%=car.fuel
+        %>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa-solid fa-gauge-simple-high"></i
+        >&nbsp;&nbsp;<%=car.driven.toLocaleString("en-IN") %>
+        &nbsp;Km&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa-solid fa-gears"></i
+        >&nbsp;&nbsp;<%=car.transmission %>
       </p>
     </div>
+
+    <div class="card col-4 card-item-right">
+      <h3 class="item-title">
+        &#8377; <%=car.price.toLocaleString("en-IN") %>
+      </h3>
+      <button class="btn btn-offer mt-3">Make offer</button>
+    </div>
+
+    <div class="card card-item-left col">
+      <h3 class="item-title blur">Overview</h3>
+      <hr />
+      <p class="item-detail">
+        <i class="fa-regular fa-user"></i>&nbsp;&nbsp;Owner<%=car.owners
+        %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-location-dot"></i></i
+        >&nbsp;&nbsp;Location<%=car.location%>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-calendar"></i></i
+        >&nbsp;&nbsp;Posding date<%=car.transmission %>
+      </p>
+    </div>
+
+    <div class="card col-4 card-item-right">
+      <h3 class="item-title">
+        Profile Name
+      </h3>
+      <button class="btn btn-post mt-3">Chat with seller</button>
+    </div>
+
+    <div class="card card-item-left col">
+      <h3 class="item-title blur">Description</h3>
+      <hr />
+       <pre><%=car.description%></pre>
+    </div>
+
   </div>
-  <b><li><%=car.brand %>&nbsp;<%=car.model %>&nbsp;(<%=car.year %>)</li></b>
-  <li><%=car.variant %></li>
-  <li>&#8377; <%=car.price.toLocaleString("en-IN") %></li>
-  <li><%=car.fuel %></li>
-  <li><%=car.driven.toLocaleString("en-IN") %> &nbsp;Km</li>
-  <li><%=car.transmission %></li>
-  <li><%=car.owners %></li>
-  <li><%=car.location %></li>
-  <li><%=car.description %></li>
   <form method="POST" action="/items/<%=car._id%>?_method=DELETE">
-    <button>Delete</button>
+    <button class="btn btn-post mb-3">Delete</button>
   </form>
   <% } %>
 </body>
