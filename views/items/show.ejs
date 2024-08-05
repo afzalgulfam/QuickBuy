@@ -6,13 +6,52 @@
 </style>
 <body>
   <% if(mobile){ %>
-  <li>&#8377; <%=mobile.price.toLocaleString("en-IN") %></li>
-  <li><%=mobile.title %></li>
-  <li><%=mobile.location%></li>
-  <li><%=mobile.brand %></li>
-  <pre><%=mobile.description %></pre>
+    <div class="row">
+    <div class="card mobile-image">
+      <img
+        src="<%=mobile.image%>"
+        class="card-img-top show-image"
+        alt="item-image"
+      />
+    </div>
+
+<div class="mobile-right">
+    <div class="card card-body mobile-right-1">
+      <h3 class="item-title mobile-price">
+        &#8377; <%=mobile.price.toLocaleString("en-IN") %>
+      </h3>
+      <p class="card-text item-detail show-description">
+        <%=mobile.title %>
+        </p>
+        <p class="size"><%=mobile.neighbourhood %>,&nbsp;<%=mobile.city %><% if(mobile.state){ %>,&nbsp;<%=mobile.state %><% } %></p> 
+      </div>
+
+        <div class="card card-body mobile-right-2">
+          <h3 class="item-title mobile-top">Profile Name</h3>
+          <button class="btn btn-post mt-3">Chat with seller</button>
+        </div>
+
+        <div class="card card-body mobile-right-3">
+          <h3 class="item-title mobile-top">Posted in</h3>
+          <p class="size"><%=mobile.neighbourhood %>,&nbsp;<%=mobile.city %><% if(mobile.state){ %>,&nbsp;<%=mobile.state %><% } %></p> 
+        </div>
+      </div>
+
+        <div class="card mobile-left">
+          <% if(mobile.category=="Mobile phones" || mobile.category=="Tablets" || mobile.category=="Bicycles"){ %>
+          <h3 class="item-title">Details</h3>
+          <p class="card-text  show-description">
+           <label class="brand blur mt-2">Brand</label>
+           <label class="brand-value offset-2"><%=mobile.title %></label>
+            </p>
+          <hr />
+          <% } %>
+          <h3 class="item-title">Description</h3>
+          <pre class="show-description"><%=mobile.description%></pre>
+        </div>
+  </div>
   <form method="POST" action="/items/<%=mobile._id%>?_method=DELETE">
-    <button>Delete</button>
+    <button class="btn btn-post mb-3">Delete</button>
   </form>
   <% } %> <% if(car){ %>
   <div class="card card-show">
@@ -23,23 +62,38 @@
     />
   </div>
   <div class="row row-cols-lg-3 row-cols-md-2">
-
     <div class="card card-item-left col">
       <h3 class="item-title">
         <%=car.brand %>&nbsp;<%=car.model %>&nbsp;(<%=car.year %>)
       </h3>
+     <% if(car.category=="Cars"){ %>
       <p><%=car.variant %></p>
       <p class="item-detail fog">
         <i class="fa-solid fa-gas-pump"></i>&nbsp;&nbsp;<%=car.fuel
-        %>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa-solid fa-gauge-simple-high"></i
+        %>&nbsp;&nbsp;|&nbsp;&nbsp;
+     <i class="fa-solid fa-gauge-simple-high"></i
         >&nbsp;&nbsp;<%=car.driven.toLocaleString("en-IN") %>
-        &nbsp;Km&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa-solid fa-gears"></i
+        &nbsp;Km
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <i class="fa-solid fa-gears"></i
         >&nbsp;&nbsp;<%=car.transmission %>
       </p>
+      <% } %><% if(car.category!="Cars"){ %>
+        <p class="card-text">
+      <label class="brand blur mt-2">Brand</label>
+      <label class="brand-value offset-2"><%=car.brand %></label>
+      <label class="brand blur offset-2">Model</label>
+      <label class="brand-value offset-2"><%=car.model %></label><br>
+      <label class="brand blur mt-3">Year</label>
+      <label class="brand-value year-value"><%=car.year %></label>
+      <label class="brand blur driven">KM driven</label>
+      <label class="brand-value driven-value"><%=car.driven %> km</label>
+    </p>
+      <% } %>
     </div>
 
-    <div class="card col-4 card-item-right">
-      <h3 class="item-title">
+    <div class="card card-item-right">
+      <h3 class="item-title car-price">
         &#8377; <%=car.price.toLocaleString("en-IN") %>
       </h3>
       <button class="btn btn-offer mt-3">Make offer</button>
@@ -49,27 +103,42 @@
       <h3 class="item-title blur">Overview</h3>
       <hr />
       <p class="item-detail">
-        <i class="fa-regular fa-user"></i>&nbsp;&nbsp;Owner<%=car.owners
-        %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-location-dot"></i></i
-        >&nbsp;&nbsp;Location<%=car.location%>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-calendar"></i></i
-        >&nbsp;&nbsp;Posding date<%=car.transmission %>
+        <div class="overview-item">
+        <div class="show-item">
+        <i class="fa-regular fa-user"></i>
+        <div class="text-column offset-1">
+          <div class="text-title">Owner</div>
+           <div class="text-value"><%=car.owners %></div> 
+        </div>
+      </div>
+        <div class="show-item">
+          <i class="fa-solid fa-location-dot  show-icon"></i>
+          <div class="text-column">
+            <div class="text-title">Location</div>
+            <div class="text-value"><%=car.neighbourhood%>,<%=car.city %></div>
+          </div>
+      </div>
+         <div class="show-item show-icon  show-icon">
+        <i class="fa-regular fa-calendar"></i>
+        <div class="text-column offset-1">
+          <div class="text-title">Posting&nbsp;date</div>
+        <div class="text-value">29-JUL</div>
+        </div>
+      </div>
+    </div>
       </p>
     </div>
 
-    <div class="card col-4 card-item-right">
-      <h3 class="item-title">
-        Profile Name
-      </h3>
+    <div class="card card-item-right">
+      <h3 class="item-title">Profile Name</h3>
       <button class="btn btn-post mt-3">Chat with seller</button>
     </div>
 
     <div class="card card-item-left col">
       <h3 class="item-title blur">Description</h3>
       <hr />
-       <pre><%=car.description%></pre>
+      <pre class="show-description"><%=car.description%></pre>
     </div>
-
   </div>
   <form method="POST" action="/items/<%=car._id%>?_method=DELETE">
     <button class="btn btn-post mb-3">Delete</button>

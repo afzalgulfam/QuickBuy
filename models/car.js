@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const carSchema = new Schema({
+  category:String,
   brand: String,
   model: String,
   variant: String,
@@ -13,7 +14,7 @@ const carSchema = new Schema({
   description: String,
   image: String,
   price: Number,
-  location: String,
+  neighbourhood: String,
   city: String,
   state: String,
 });

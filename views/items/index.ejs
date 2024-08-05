@@ -15,11 +15,17 @@
           style="height: 12rem"
         />
         <div class="card-body">
+          <h3 class="item-title index-price">
+        &#8377; <%=mobile.price.toLocaleString("en-IN") %>
+      </h3>
           <p class="card-text">
-            <strong> &#8377; <%= mobile.price%></strong><br />
-            <%= mobile.title %><br />
-            <b> <%= mobile.brand %></b><br />
-            <small> <%= mobile.location %></small>
+           <label class="show-description blur"><%= mobile.title %></label><br>
+          <% if(mobile.brand){%>
+            <label><b> <%=mobile.brand%></b></label><br>
+          <%}%><% if(!mobile.brand){%>
+            <label>&nbsp;&nbsp;&nbsp;</label><br>
+          <%}%>
+            <label class="size blur"><%= mobile.neighbourhood %>,&nbsp;<%=mobile.city%></label> 
           </p>
         </div>
       </div>
@@ -35,11 +41,13 @@
           style="height: 12rem"
         />
         <div class="card-body">
+          <h3 class="item-title index-price">
+        &#8377; <%=car.price.toLocaleString("en-IN") %>
+      </h3>
           <p class="card-text">
-            <strong> &#8377; <%= car.price %></strong><br />
             <%= car.year %> - <%= car.driven %> Km <br />
-            <strong> <%= car.brand %>&nbsp;<%= car.model %></strong><br />
-            <small><%= car.location %></small>
+           <label><b><%= car.brand %>&nbsp;<%= car.model %></b></label><br>
+            <label class="size blur"><%= car.neighbourhood %>,&nbsp;<%=car.city%></label>
           </p>
         </div>
       </div>

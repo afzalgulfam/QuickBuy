@@ -55,9 +55,9 @@ app.get("/items/:id/attribute", async (req, res) => {
 });
 
 // New Route
-app.get("/items/:id/new", async (req, res) => {
-  let { id } = req.params;
-  res.render("items/new.ejs", { id });
+app.get("/items/:id2/new", async (req, res) => {
+  let { id2 } = req.params;
+  res.render("items/new.ejs", { id2 });
 });
 
 // Create Route
