@@ -6,6 +6,8 @@ const Car = require("./models/car.js");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
+const wrapAsync = require("./utils/wrapAsync.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 main()
   .then(() => {
@@ -29,11 +31,14 @@ app.get("/", (req, res) => {
 });
 
 // Index Route
-app.get("/items", async (req, res) => {
-  const allMobile = await Mobile.find({});
-  const allCar = await Car.find({});
-  res.render("items/index.ejs", { allMobile, allCar });
-});
+app.get(
+  "/items",
+  wrapAsync(async (req, res) => {
+    const allMobile = await Mobile.find({});
+    const allCar = await Car.find({});
+    res.render("items/index.ejs", { allMobile, allCar });
+  })
+);
 
 // Items Route
 app.get("/items/item", (req, res) => {
@@ -41,12 +46,15 @@ app.get("/items/item", (req, res) => {
 });
 
 // Show Route
-app.get("/items/:id", async (req, res) => {
-  let { id } = req.params;
-  const mobile = await Mobile.findById(id);
-  const car = await Car.findById(id);
-  res.render("items/show.ejs", { mobile, car });
-});
+app.get(
+  "/items/:id",
+  wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    const mobile = await Mobile.findById(id);
+    const car = await Car.findById(id);
+    res.render("items/show.ejs", { mobile, car });
+  })
+);
 
 // Attribute Route
 app.get("/items/:id/attribute", async (req, res) => {
@@ -61,24 +69,40 @@ app.get("/items/:id2/new", async (req, res) => {
 });
 
 // Create Route
-app.post("/items", async (req, res) => {
-  if (req.body.car) {
-    let newCar = new Car(req.body.car);
-    await newCar.save();
-  }
-  if (req.body.mobile) {
-    let newMobile = new Mobile(req.body.mobile);
-    await newMobile.save();
-  }
-  res.redirect("/items");
-});
+app.post(
+  "/items",
+  wrapAsync(async (req, res) => {
+    if (req.body.car) {
+      let newCar = new Car(req.body.car);
+      await newCar.save();
+    }
+    if (req.body.mobile) {
+      let newMobile = new Mobile(req.body.mobile);
+      await newMobile.save();
+    }
+    res.redirect("/items");
+  })
+);
 
 // Delete Route
-app.delete("/items/:id", async (req, res) => {
-  let { id } = req.params;
-  await Car.findByIdAndDelete(id);
-  await Mobile.findByIdAndDelete(id);
-  res.redirect("/items");
+app.delete(
+  "/items/:id",
+  wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    await Car.findByIdAndDelete(id);
+    await Mobile.findByIdAndDelete(id);
+    res.redirect("/items");
+  })
+);
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError(404, "Page Not Found!"));
+});
+
+app.use((err, req, res, next) => {
+  let { statusCode = 500, message = "Something went wrong!" } = err;
+  res.status(statusCode).render("error.ejs", { message });
+  // res.status(statusCode).send(message);
 });
 
 app.listen(8080, () => {

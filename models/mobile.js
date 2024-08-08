@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const mobileSchema = new Schema({
-  category:String,
+  category: String,
   brand: String,
   title: String,
   description: String,

@@ -1,6 +1,6 @@
 const sampleMobile = [
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Samsung",
     title: "Samsung Galaxy S21 Ultra",
     description:
@@ -24,7 +24,7 @@ const sampleMobile = [
     city: "Delhi",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "OnePlus",
     title: "OnePlus 9",
     description:
@@ -37,7 +37,7 @@ const sampleMobile = [
     state: "Karnatak",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Xiaomi",
     title: "Xiaomi Mi 11X",
     description:
@@ -50,7 +50,7 @@ const sampleMobile = [
     state: "Telengana",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Realme",
     title: "Realme GT",
     description:
@@ -63,7 +63,7 @@ const sampleMobile = [
     state: "maharastra",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Oppo",
     title: "Oppo Reno 6 Pro",
     description:
@@ -76,7 +76,7 @@ const sampleMobile = [
     state: "tamil nadu",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Vivo",
     title: "Vivo X60 Pro+",
     description:
@@ -88,7 +88,7 @@ const sampleMobile = [
     city: "Delhi",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Google",
     title: "Google Pixel 5a",
     description:
@@ -101,7 +101,7 @@ const sampleMobile = [
     state: "karnatak",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Motorola",
     title: "Motorola Edge 20 Pro",
     description:
@@ -114,7 +114,7 @@ const sampleMobile = [
     state: "tamil nadu",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "Nokia",
     title: "Nokia G50",
     description:
@@ -127,7 +127,7 @@ const sampleMobile = [
     state: "Telengana",
   },
   {
-    category:"Mobile phones",
+    category: "Mobile phones",
     brand: "OnePlus",
     title: "OnePlus Nord 2",
     description:
@@ -143,7 +143,7 @@ const sampleMobile = [
 
 const sampleCar = [
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Maruti Suzuki",
     model: "Swift",
     variant: "VXI",
@@ -162,7 +162,7 @@ const sampleCar = [
     state: "maharastra",
   },
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Hyundai",
     model: "i20",
     variant: "Asta",
@@ -180,7 +180,7 @@ const sampleCar = [
     city: "Delhi",
   },
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Toyota",
     model: "Innova",
     variant: "Crysta 2.4 VX",
@@ -199,7 +199,7 @@ const sampleCar = [
     state: "karnataka",
   },
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Honda",
     model: "City",
     variant: "VX",
@@ -218,7 +218,7 @@ const sampleCar = [
     state: "tamil nadu",
   },
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Ford",
     model: "EcoSport",
     variant: "Titanium",
@@ -237,7 +237,7 @@ const sampleCar = [
     state: "maharastra",
   },
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Volkswagen",
     model: "Polo",
     variant: "Highline Plus",
@@ -256,7 +256,7 @@ const sampleCar = [
     state: "west bengal",
   },
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Tata",
     model: "Nexon",
     variant: "XZ",
@@ -275,7 +275,7 @@ const sampleCar = [
     state: "Telengana",
   },
   {
-    category:"Cars",
+    category: "Cars",
     brand: "Mahindra",
     model: "Scorpio",
     variant: "S11",
@@ -294,8 +294,6 @@ const sampleCar = [
     state: "Uttarpradesh",
   },
 ];
-
-
 
 module.exports = { carData: sampleCar };
 module.exports = { mobileData: sampleMobile };
