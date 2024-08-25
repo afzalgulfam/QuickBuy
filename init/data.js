@@ -13,6 +13,7 @@ const sampleMobile = [
     state: "Maharastra",
   },
   {
+    category: "Mobile phones",
     brand: "Apple",
     title: "iPhone 12 Pro Max",
     description:

@@ -17,6 +17,7 @@ const carSchema = new Schema({
   neighbourhood: String,
   city: String,
   state: String,
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Car = mongoose.model("Car", carSchema);

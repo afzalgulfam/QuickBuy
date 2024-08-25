@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const mobileSchema = new Schema({
+const userSchema = new Schema({
   category: String,
   brand: String,
   title: String,
@@ -11,8 +11,7 @@ const mobileSchema = new Schema({
   neighbourhood: String,
   city: String,
   state: String,
-  createdAt: { type: Date, default: Date.now },
 });
 
-const Mobile = mongoose.model("Mobile", mobileSchema);
-module.exports = Mobile;
+const User = mongoose.model("User", userSchema);
+module.exports = User;

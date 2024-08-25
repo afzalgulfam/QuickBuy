@@ -53,6 +53,9 @@
   <form method="POST" action="/items/<%=mobile._id%>?_method=DELETE">
     <button class="btn btn-post mb-3">Delete</button>
   </form>
+  <form method="get" action="/items/<%=mobile._id%>/edit">
+    <button class="btn btn-post mb-3">Edit</button>
+  </form>
   <% } %> <% if(car){ %>
   <div class="card card-show">
     <img
@@ -142,6 +145,9 @@
   </div>
   <form method="POST" action="/items/<%=car._id%>?_method=DELETE">
     <button class="btn btn-post mb-3">Delete</button>
+  </form>
+  <form method="get" action="/items/<%=car._id%>/edit">
+    <button class="btn btn-post mb-3">Edit</button>
   </form>
   <% } %>
 </body>

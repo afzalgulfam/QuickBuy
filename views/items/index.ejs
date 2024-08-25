@@ -16,7 +16,7 @@
         />
         <div class="card-body">
           <h3 class="item-title index-price">
-            &#8377; <%=mobile.price%>
+            &#8377; <%=mobile.price.toLocaleString("en-IN")%>
           </h3>
           <p class="card-text">
             <label class="show-description blur"><%= mobile.title %></label
@@ -46,10 +46,11 @@
         />
         <div class="card-body">
           <h3 class="item-title index-price">
-            &#8377; <%=car.price%>
+            &#8377; <%=car.price.toLocaleString("en-IN")%>
           </h3>
           <p class="card-text">
-            <%= car.year %> - <%= car.driven %> Km <br />
+            <%= car.year %> - <%= car.driven.toLocaleString("en-IN") %> Km
+            <br />
             <label><b><%= car.brand %>&nbsp;<%= car.model %></b></label
             ><br />
             <label class="size blur"

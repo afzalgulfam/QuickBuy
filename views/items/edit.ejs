@@ -9,21 +9,22 @@
   <h4>POST YOUR AD</h4>
   <div class="centre">
     <div class="row item-info">
-      <b class="select">SELECTED CATEGORY</b>
-      <span class="new-change">
-        <span class="blur size"> <%= id2 %></span
-        ><a href="/items/item" class="change"><b>Change</b></a>
-      </span>
       <div class="hr"></div>
       <b class="include">INCLUDE SOME DETAILS</b><br />
       <span class="input">
-        <% if(id2=="Cars" || id2=="Motorcycles" || id2=="Scooters"){ %>
-        <form method="POST" action="/items/cars" novalidate class="needs-validation">
-          <input type="hidden" name="car[category]" value="<%=id2%>" />
+        <% if(car){ %>
+        <form
+          method="POST"
+          action="/items/cars/<%=car._id%>?_method=PUT"
+          novalidate
+          class="needs-validation"
+        >
+          <input type="hidden" name="car[category]" value="<%=car.category%>" />
           <div class="mb-3">
             <label for="brand" class="form-label label-text">Brand *</label>
             <input
               name="car[brand]"
+              value="<%=car.brand %>"
               type="text"
               class="form-control"
               required
@@ -36,6 +37,7 @@
             <label for="model" class="form-label label-text">Model *</label>
             <input
               name="car[model]"
+              value="<%=car.model %>"
               type="text"
               class="form-control"
               required
@@ -44,11 +46,12 @@
               Model is mandatory. Please complete the required field.
             </div>
           </div>
-          <% if(id2=="Cars"){ %>
+          <% if(car.category=="Cars"){ %>
           <div class="mb-3">
             <label for="variant" class="form-label label-text">Variant *</label>
             <input
               name="car[variant]"
+              value="<%=car.variant %>"
               type="text"
               class="form-control"
               required
@@ -62,6 +65,7 @@
             <label for="year" class="form-label label-text">Year *</label>
             <input
               name="car[year]"
+              value="<%=car.year %>"
               class="form-control"
               type="number"
               required
@@ -70,7 +74,7 @@
               Year is mandatory. Please complete the required field.
             </div>
           </div>
-          <% if(id2=="Cars"){ %>
+          <% if(car.category=="Cars"){ %>
           <div class="mb-3">
             <label class="label-text">Fuel *</label><br />
             <br />
@@ -171,6 +175,7 @@
             <label for="driven" class="form-label">KM driven *</label>
             <input
               name="car[driven]"
+              value="<%=car.driven %>"
               class="form-control"
               type="number"
               required
@@ -253,7 +258,9 @@
               class="form-control"
               rows="4"
               required
-            ></textarea>
+            >
+<%= car.description %></textarea
+            >
             <label class="size"
               >Include condition, features and reason for selling</label
             >
@@ -262,6 +269,7 @@
             <label for="price" class="form-label">Price *</label>
             <input
               name="car[price]"
+              value="<%=car.price %>"
               class="form-control"
               type="number"
               required
@@ -270,13 +278,19 @@
           </div>
           <div class="mb-3">
             <label for="image" class="form-label">UPLOAD PHOTOS *</label>
-            <input name="car[image]" class="form-control" type="text" />
+            <input
+              name="car[image]"
+              value="<%=car.image %>"
+              class="form-control"
+              type="text"
+            />
             <label class="size validate">This field is mandatory</label>
           </div>
           <div class="mb-3">
             <label for="location" class="form-label">Neighbourhood *</label>
             <input
               name="car[neighbourhood]"
+              value="<%=car.neighbourhood %>"
               class="form-control"
               type="text"
               required
@@ -284,23 +298,45 @@
           </div>
           <div class="mb-3">
             <label for="city" class="form-label">City *</label>
-            <input name="car[city]" class="form-control" type="text" required />
+            <input
+              name="car[city]"
+              class="form-control"
+              type="text"
+              value="<%=car.city %>"
+              required
+            />
           </div>
           <div class="mb-3">
             <label for="state" class="form-label">State </label>
-            <input name="car[state]" class="form-control" type="text" />
+            <input
+              name="car[state]"
+              value="<%=car.state %>"
+              class="form-control"
+              type="text"
+            />
             <label class="size validate">This field is mandatory</label>
           </div>
           <button class="btn btn-post mb-3">Post now</button>
         </form>
-        <% } %> <% if(id2=="Mobile phones" || id2=="Tablets" ||
-        id2=="Bicycles"){ %>
-        <form method="POST" action="/items/mobiles" novalidate class="needs-validation">
-          <input type="hidden" name="mobile[category]" value="<%=id2%>" />
+        <% } %> <% if(mobile){ %>
+        <form
+          method="POST"
+          action="/items/mobiles/<%=mobile._id%>?_method=PUT"
+          novalidate
+          class="needs-validation"
+        >
+          <input
+            type="hidden"
+            name="mobile[category]"
+            value="<%=mobile.category%>"
+          />
+          <% if(mobile.category=="Mobile phones" || mobile.category=="Tablets"
+          || mobile.category=="Bicycles"){ %>
           <div class="mb-3">
             <label for="brand" class="form-label">Brand *</label>
             <input
               name="mobile[brand]"
+              value="<%=mobile.brand %>"
               class="form-control"
               type="text"
               required
@@ -309,15 +345,20 @@
               Brand is mandatory. Please complete the required field.
             </div>
           </div>
+          <% } %>
           <div class="mb-3">
             <label for="title" class="form-label">Ad title *</label>
             <input
               name="mobile[title]"
+              value="<%=mobile.title %>"
               class="form-control"
               type="text"
               required
             />
-            <label class="size" >Mention the key features of your item (e.g. brand, model, age,type)</label>
+            <label class="size"
+              >Mention the key features of your item (e.g. brand, model,
+              age,type)</label
+            >
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description *</label>
@@ -326,13 +367,18 @@
               class="form-control"
               rows="4"
               required
-            ></textarea>
-            <label class="size">Include condition, features and reason for selling</label >
+            >
+<%=mobile.description %></textarea
+            >
+            <label class="size"
+              >Include condition, features and reason for selling</label
+            >
           </div>
           <div class="mb-3">
             <label for="price" class="form-label">Price *</label>
             <input
               name="mobile[price]"
+              value="<%=mobile.price %>"
               class="form-control"
               type="number"
               required
@@ -341,13 +387,19 @@
           </div>
           <div class="mb-3">
             <label for="image" class="form-label">Image *</label>
-            <input name="mobile[image]" class="form-control" type="text" />
+            <input
+              name="mobile[image]"
+              value="<%=mobile.image %>"
+              class="form-control"
+              type="text"
+            />
             <label class="size validate">This field is mandatory</label>
           </div>
           <div class="mb-3">
             <label for="location" class="form-label">Neighbourhood *</label>
             <input
               name="mobile[neighbourhood]"
+              value="<%=mobile.neighbourhood %>"
               class="form-control"
               type="text"
               required
@@ -357,6 +409,7 @@
             <label for="city" class="form-label">City *</label>
             <input
               name="mobile[city]"
+              value="<%=mobile.city %>"
               class="form-control"
               type="text"
               required
@@ -364,76 +417,12 @@
           </div>
           <div class="mb-3">
             <label for="state" class="form-label">State </label>
-            <input name="mobile[state]" class="form-control" type="text" />
-            <label class="size validate">This field is mandatory</label>
-          </div>
-          <button class="btn btn-post mb-3">Post Now</button>
-        </form>
-        <% } %> <% if(id2=="Accessories" || id2=="Spare Parts" || id2=="Men" || id2=="Women"
-         || id2=="Kids" || id2=="Sofa & Dining" || id2=="Beds & Wardrobes" || id2=="Home Decor & Garden"
-         || id2=="Kids Furniture" || id2=="Other Household Items" || id2=="TVs, Video-Audio"
-         || id2=="Kitchen & Other Appliances" || id2=="Computers & Laptops" || id2=="Fridges" ||
-        id2=="Computer Accessories" || id2=="Cameras & Lenses" || id2=="Games & Entertainment" || 
-        id2=="Hard Disks, Printers & Monitors" || id2=="Washing Machines" || id2=="ACs"){ %>
-        <form method="POST" action="/items/mobiles" novalidate class="needs-validation">
-          <input type="hidden" name="mobile[category]" value="<%=id2%>" />
-          <div class="mb-3">
-            <label for="title" class="form-label">Ad title *</label>
             <input
-              name="mobile[title]"
+              name="mobile[state]"
+              value="<%=mobile.state %>"
               class="form-control"
               type="text"
-              required
             />
-            <label class="size">Mention the key features of your item (e.g. brand, model, age, type)</label>
-          </div>
-          <div class="mb-3">
-            <label for="description" class="form-label">Description *</label>
-            <textarea
-              name="mobile[description]"
-              class="form-control"
-              rows="4"
-              required
-            ></textarea>
-            <label class="size">Include condition, features and reason for selling</label>
-          </div>
-          <div class="mb-3">
-            <label for="price" class="form-label">Price *</label>
-            <input
-              name="mobile[price]"
-              class="form-control"
-              type="number"
-              required
-            />
-            <div class="invalid-feedback size">This field is mandatory</div>
-          </div>
-          <div class="mb-3">
-            <label for="image" class="form-label">Image *</label>
-            <input name="mobile[image]" class="form-control" type="text" />
-            <label class="size validate">This field is mandatory</label>
-          </div>
-          <div class="mb-3">
-            <label for="neighbourhood" class="form-label"
-              >Neighbourhood *</label>
-            <input
-              name="mobile[neighbourhood]"
-              class="form-control"
-              type="text"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="city" class="form-label">City *</label>
-            <input
-              name="mobile[city]"
-              class="form-control"
-              type="text"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="state" class="form-label">State </label>
-            <input name="mobile[state]" class="form-control" type="text" />
             <label class="size validate">This field is mandatory</label>
           </div>
           <button class="btn btn-post mb-3">Post Now</button>

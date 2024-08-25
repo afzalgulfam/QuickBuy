@@ -8,6 +8,9 @@ const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const { carSchema, mobileSchema } = require("./schema.js");
+
+const items = require("./routes/item.js");
 
 main()
   .then(() => {
@@ -30,70 +33,27 @@ app.get("/", (req, res) => {
   res.send("Hii, I am Root");
 });
 
-// Index Route
-app.get(
-  "/items",
-  wrapAsync(async (req, res) => {
-    const allMobile = await Mobile.find({});
-    const allCar = await Car.find({});
-    res.render("items/index.ejs", { allMobile, allCar });
-  })
-);
+const validateCar = (req, res, next) => {
+  let { error } = carSchema.validate(req.body);
+  if (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg);
+  } else {
+    next();
+  }
+};
 
-// Items Route
-app.get("/items/item", (req, res) => {
-  res.render("items/item.ejs");
-});
+const validateMobile = (req, res, next) => {
+  let { error } = mobileSchema.validate(req.body);
+  if (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg);
+  } else {
+    next();
+  }
+};
 
-// Show Route
-app.get(
-  "/items/:id",
-  wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    const mobile = await Mobile.findById(id);
-    const car = await Car.findById(id);
-    res.render("items/show.ejs", { mobile, car });
-  })
-);
-
-// Attribute Route
-app.get("/items/:id/attribute", async (req, res) => {
-  let { id } = req.params;
-  res.render("items/attribute.ejs", { id });
-});
-
-// New Route
-app.get("/items/:id2/new", async (req, res) => {
-  let { id2 } = req.params;
-  res.render("items/new.ejs", { id2 });
-});
-
-// Create Route
-app.post(
-  "/items",
-  wrapAsync(async (req, res) => {
-    if (req.body.car) {
-      let newCar = new Car(req.body.car);
-      await newCar.save();
-    }
-    if (req.body.mobile) {
-      let newMobile = new Mobile(req.body.mobile);
-      await newMobile.save();
-    }
-    res.redirect("/items");
-  })
-);
-
-// Delete Route
-app.delete(
-  "/items/:id",
-  wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    await Car.findByIdAndDelete(id);
-    await Mobile.findByIdAndDelete(id);
-    res.redirect("/items");
-  })
-);
+app.use("/items", items);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
