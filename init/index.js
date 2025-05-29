@@ -14,8 +14,12 @@ async function main() {
 }
 
 const initDB = async () => {
-  await Mobile.deleteMany({});
-  await Mobile.insertMany(initData.mobileData);
+  await Car.deleteMany({});
+  initData.carData = initData.carData.map((obj) => ({
+    ...obj,
+    owner: "680e0c54bef06ddefddba204",
+  }));
+  await Car.insertMany(initData.carData);
   console.log("data was initialized");
 };
 

@@ -12,6 +12,16 @@ const mobileSchema = new Schema({
   city: String,
   state: String,
   createdAt: { type: Date, default: Date.now },
+  messages: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Message",
+    },
+  ],
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Mobile = mongoose.model("Mobile", mobileSchema);

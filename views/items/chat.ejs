@@ -1,0 +1,64 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  footer {
+    display: none;
+  }
+</style>
+
+<div class="row">
+  <div class="card col card-chat">
+    <div class="chat-top">
+      <h3 class="item-title">Profile Name</h3>
+      <hr />
+      <p class="item-detail">
+        <% if (car) { %> <%= car.brand %> <%= car.model %> (<%= car.year %>) -
+        ₹<%= car.price.toLocaleString("en-IN") %> <% } %> <% if (mobile) { %>
+        <%= mobile.brand %> <%= mobile.title %> <% } %>
+      </p>
+    </div>
+
+    <!-- Chat messages -->
+    <ul id="messages">
+      <% let chats = car ? car.messages : mobile ? mobile.messages : []; %> <%
+      for (let message of chats) { %>
+      <li><%= message.message %></li>
+      <% } %>
+    </ul>
+
+    <!-- Chat input -->
+    <form id="chatForm">
+      <input
+        type="text"
+        id="chatInput"
+        placeholder="Type a message"
+        class="form-control chat-input"
+      />
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+  </div>
+</div>
+
+<!-- Socket.IO client -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+
+  const chatForm = document.getElementById("chatForm");
+  const chatInput = document.getElementById("chatInput");
+  const messagesList = document.getElementById("messages");
+
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    socket.emit("chatMessage", message);
+    chatInput.value = "";
+  });
+
+  socket.on("chatMessage", (msg) => {
+    const li = document.createElement("li");
+    li.innerText = msg;
+    messagesList.appendChild(li);
+  });
+</script>

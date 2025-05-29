@@ -5,58 +5,6 @@
   }
 </style>
 <body>
-  <% if(mobile){ %>
-    <div class="row">
-    <div class="card mobile-image">
-      <img
-        src="<%=mobile.image%>"
-        class="card-img-top show-image"
-        alt="item-image"
-      />
-    </div>
-
-<div class="mobile-right">
-    <div class="card card-body mobile-right-1">
-      <h3 class="item-title mobile-price">
-        &#8377; <%=mobile.price.toLocaleString("en-IN") %>
-      </h3>
-      <p class="card-text item-detail show-description">
-        <%=mobile.title %>
-        </p>
-        <p class="size"><%=mobile.neighbourhood %>,&nbsp;<%=mobile.city %><% if(mobile.state){ %>,&nbsp;<%=mobile.state %><% } %></p> 
-      </div>
-
-        <div class="card card-body mobile-right-2">
-          <h3 class="item-title mobile-top">Profile Name</h3>
-          <button class="btn btn-post mt-3">Chat with seller</button>
-        </div>
-
-        <div class="card card-body mobile-right-3">
-          <h3 class="item-title mobile-top">Posted in</h3>
-          <p class="size"><%=mobile.neighbourhood %>,&nbsp;<%=mobile.city %><% if(mobile.state){ %>,&nbsp;<%=mobile.state %><% } %></p> 
-        </div>
-      </div>
-
-        <div class="card mobile-left">
-          <% if(mobile.category=="Mobile phones" || mobile.category=="Tablets" || mobile.category=="Bicycles"){ %>
-          <h3 class="item-title">Details</h3>
-          <p class="card-text  show-description">
-           <label class="brand blur mt-2">Brand</label>
-           <label class="brand-value offset-2"><%=mobile.title %></label>
-            </p>
-          <hr />
-          <% } %>
-          <h3 class="item-title">Description</h3>
-          <pre class="show-description"><%=mobile.description%></pre>
-        </div>
-  </div>
-  <form method="POST" action="/items/<%=mobile._id%>?_method=DELETE">
-    <button class="btn btn-post mb-3">Delete</button>
-  </form>
-  <form method="get" action="/items/<%=mobile._id%>/edit">
-    <button class="btn btn-post mb-3">Edit</button>
-  </form>
-  <% } %> <% if(car){ %>
   <div class="card card-show">
     <img
       src="<%=car.image%>"
@@ -133,8 +81,10 @@
     </div>
 
     <div class="card card-item-right">
-      <h3 class="item-title">Profile Name</h3>
-      <button class="btn btn-post mt-3">Chat with seller</button>
+      <h3 class="item-title"><%=car.owner.username%></h3>
+      <form action="/items/<%=car._id %>/chat" method="GET">
+      <button class="btn btn-post btn-chat mt-3">Chat with seller</button>
+      </form>
     </div>
 
     <div class="card card-item-left col">
@@ -143,11 +93,15 @@
       <pre class="show-description"><%=car.description%></pre>
     </div>
   </div>
-  <form method="POST" action="/items/<%=car._id%>?_method=DELETE">
-    <button class="btn btn-post mb-3">Delete</button>
+
+  <% if(currUser && currUser._id.equals(car.owner._id)) {%>
+<div class="ms-5 d-flex gap-3">
+  <form method="POST" action="/items/car/<%=car._id%>?_method=DELETE">
+    <button class="btn btn-post mb-3 ">Delete</button>
   </form>
-  <form method="get" action="/items/<%=car._id%>/edit">
+  <form method="get" action="/items/car/<%=car._id%>/edit">
     <button class="btn btn-post mb-3">Edit</button>
   </form>
-  <% } %>
+</div>
+<% } %>
 </body>

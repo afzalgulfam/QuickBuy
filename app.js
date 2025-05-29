@@ -1,16 +1,22 @@
 const express = require("express");
 const app = express();
+const http = require("http");
+const server = http.createServer(app);
+const socketio = require("socket.io");
+const io = socketio(server);
 const mongoose = require("mongoose");
-const Mobile = require("./models/mobile.js");
-const Car = require("./models/car.js");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
-const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const { carSchema, mobileSchema } = require("./schema.js");
+const session = require("express-session");
+const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
-const items = require("./routes/item.js");
+const itemsRouter = require("./routes/item.js");
+const userRouter = require("./routes/user.js");
 
 main()
   .then(() => {
@@ -29,31 +35,35 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(methodOverride("_method"));
 
-app.get("/", (req, res) => {
-  res.send("Hii, I am Root");
+const sessionOptions = {
+  secret: "secretgamecode",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  },
+};
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
+  next();
 });
 
-const validateCar = (req, res, next) => {
-  let { error } = carSchema.validate(req.body);
-  if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400, errMsg);
-  } else {
-    next();
-  }
-};
-
-const validateMobile = (req, res, next) => {
-  let { error } = mobileSchema.validate(req.body);
-  if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400, errMsg);
-  } else {
-    next();
-  }
-};
-
-app.use("/items", items);
+app.use("/items", itemsRouter);
+app.use("/", userRouter);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
@@ -65,6 +75,22 @@ app.use((err, req, res, next) => {
   // res.status(statusCode).send(message);
 });
 
-app.listen(8080, () => {
+server.listen(8080, () => {
   console.log("app is listing to port 8080");
 });
+
+io.on("connection", (socket) => {
+  console.log("User connected: ", socket.id);
+
+  // Receive message and broadcast it
+  socket.on("chatMessage", (msg) => {
+    io.emit("chatMessage", msg); // sends to everyone
+  });
+
+  socket.on("disconnect", () => {
+    console.log("User disconnected: ", socket.id);
+  });
+});
+
+// make io available elsewhere (optional)
+app.set("io", io);

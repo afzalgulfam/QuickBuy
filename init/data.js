@@ -296,5 +296,5 @@ const sampleCar = [
   },
 ];
 
-module.exports = { carData: sampleCar };
 module.exports = { mobileData: sampleMobile };
+module.exports = { carData: sampleCar };

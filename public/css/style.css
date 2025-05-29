@@ -364,6 +364,10 @@ input[type="radio"]:checked + label {
   font-weight: bold;
 }
 
+.btn-chat {
+  width: 100% !important;
+}
+
 /* Show Mobile Page */
 
 .mobile-image {
@@ -438,4 +442,23 @@ input[type="radio"]:checked + label {
 
 .driven-value {
   margin-left: 103px;
+}
+
+/* Chats Page */
+.card-chat {
+  min-height: 90vh;
+  background-color: #f8f9fa !important;
+}
+
+.chat-input {
+  position: fixed;
+  bottom: 0;
+  width: 700px !important;
+  left: 100px;
+  border-radius: 0px !important;
+}
+
+.chat-top {
+  background-color: white;
+  width: 100%;
 }
